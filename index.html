@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TicTacToe – 2 Pemain</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== SETUP SCREEN ===== -->
+  <div id="setup-screen" class="screen active">
+    <div class="card setup-card">
+      <div class="logo">
+        <span class="x-color">X</span><span class="divider">vs</span><span class="o-color">O</span>
+      </div>
+      <h1>TicTacToe</h1>
+      <p class="subtitle">Masukkan nama pemain untuk memulai</p>
+
+      <div class="input-group">
+        <label for="player1-name">
+          <span class="x-color">✕</span> Pemain 1
+        </label>
+        <input type="text" id="player1-name" placeholder="Nama Pemain 1" maxlength="15" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <label for="player2-name">
+          <span class="o-color">○</span> Pemain 2
+        </label>
+        <input type="text" id="player2-name" placeholder="Nama Pemain 2" maxlength="15" autocomplete="off" />
+      </div>
+
+      <button id="start-btn" class="btn btn-primary">Mulai Permainan</button>
+      <button id="view-lb-btn" class="btn btn-secondary">🏆 Lihat Leaderboard</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME SCREEN ===== -->
+  <div id="game-screen" class="screen">
+    <div class="game-wrapper">
+
+      <!-- Score bar -->
+      <div class="scorebar">
+        <div class="score-box" id="score-p1">
+          <div class="score-symbol x-color">✕</div>
+          <div class="score-name" id="name-p1">Pemain 1</div>
+          <div class="score-value" id="pts-p1">0</div>
+        </div>
+        <div class="score-box draws">
+          <div class="score-symbol">🤝</div>
+          <div class="score-name">Seri</div>
+          <div class="score-value" id="pts-draw">0</div>
+        </div>
+        <div class="score-box" id="score-p2">
+          <div class="score-symbol o-color">○</div>
+          <div class="score-name" id="name-p2">Pemain 2</div>
+          <div class="score-value" id="pts-p2">0</div>
+        </div>
+      </div>
+
+      <!-- Status banner -->
+      <div id="status-banner" class="status-banner">
+        <span id="status-text">Giliran Pemain 1</span>
+      </div>
+
+      <!-- Board -->
+      <div id="board" class="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="action-row">
+        <button id="restart-btn" class="btn btn-outline">🔄 Main Lagi</button>
+        <button id="new-game-btn" class="btn btn-outline">👥 Ganti Pemain</button>
+        <button id="leaderboard-btn" class="btn btn-outline">🏆 Leaderboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WIN OVERLAY ===== -->
+  <div id="win-overlay" class="overlay hidden">
+    <div class="overlay-card">
+      <div id="win-icon" class="win-icon">🎉</div>
+      <h2 id="win-title">Pemain 1 Menang!</h2>
+      <p id="win-subtitle">Selamat atas kemenangan ini!</p>
+      <div class="overlay-actions">
+        <button id="overlay-again" class="btn btn-primary">🔄 Main Lagi</button>
+        <button id="overlay-change" class="btn btn-secondary">👥 Ganti Pemain</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LEADERBOARD SCREEN ===== -->
+  <div id="leaderboard-screen" class="screen">
+    <div class="card lb-card">
+      <h2>🏆 Leaderboard</h2>
+      <p class="subtitle">10 pemain terbaik sepanjang masa</p>
+
+      <div class="lb-table-wrap">
+        <table class="lb-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nama</th>
+              <th>Menang</th>
+              <th>Main</th>
+              <th>Win%</th>
+            </tr>
+          </thead>
+          <tbody id="lb-body">
+            <tr class="lb-empty">
+              <td colspan="5">Belum ada data permainan</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button id="back-from-lb" class="btn btn-secondary">← Kembali</button>
+      <button id="clear-lb-btn" class="btn btn-danger">🗑 Hapus Data</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
